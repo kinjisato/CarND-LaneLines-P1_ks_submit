@@ -48,6 +48,6 @@ The shortcoming is the stability of the detection of pipelines after draw_lines.
 
 ### 3. Suggest possible improvements to your pipeline
 
-To improve, I might need to tune the parameters for Hough transformartion. These were a litte difficult for me, and due to the deadline for submit, I choosed curret values. And draw_lines also might need to be modified more. Because, to make smooth slope from the lines after hoguh, I made current computing way. But, if Hough transformation give better result than current my code, draw_lines() will be better, and if some time domain filter in the function, slope would be more stable like example move.
+To improve, I might need to tune the parameters for Hough transformartion. These were a litte difficult for me, and due to the deadline for submit, I choosed curret values. And draw_lines also might need to be modified more. Because, to make smooth slope from the lines after hoguh, I made current computing way. But, if Hough transformation give better result than current my code, draw_lines() will be better, and if some time domain filter in the function, slope would be more stable like example movie.
 
 
