@@ -13,11 +13,7 @@ The goals / steps of this project are the following:
 * Reflect on your work in a written report
 
 
-[//]: # (Image References)
 
-[image1]: ./examples/grayscale.jpg "Grayscale"
-
----
 
 ### Reflection
 
@@ -39,20 +35,19 @@ I choosed Y = 320, because, if this was smaller than this, many pipes (not R and
 
 6th, finaly, I combined the R and L linen from Hough transrom (draw_line) and original image.
 
+** Modification of draw_lines() funtion **
+To get averae slope (gradient) of R and L pipes, as first, I computed the slopes (gradient) from each set of x1,y1,x2 and y2 as suggested in the code. I clipped the min and max value of slope, to eliminate the slopes those not related to main R and L pipes. Clipping slope worked like filters. Then, after takeing the average of slope, single R and L pipe were extrapolated to the top of region area (Y=320) and bottom of image.
 
-
+I defined 'ave' parameter in draw_lines. If that is False, the code works as originaly difined. If that is True, the code works with my modification above.
 
 
 ### 2. Identify potential shortcomings with your current pipeline
 
-
-One potential shortcoming would be what would happen when ... 
-
-Another shortcoming could be ...
+The shortcoming is the stability of the detection of pipelines after draw_lines. There is no time domain filter in the code,just only clipping the slope (gradient), so if Hough transformation do not find any pipes or incorret lines, maybe starility of the pipeline would be worse.
 
 
 ### 3. Suggest possible improvements to your pipeline
 
-A possible improvement would be to ...
+To improve, I might need to tune the parameters for Hough transformartion. These were a litte difficult for me, and due to the deadline for submit, I choosed curret values. And draw_lines also might need to be modified more. Because, to make smooth slope from the lines after hoguh, I made current computing way. But, if Hough transformation give better result than current my code, draw_lines() will be better, and if some time domain filter in the function, slope would be more stable like example move.
 
-Another potential improvement could be to ...
+
