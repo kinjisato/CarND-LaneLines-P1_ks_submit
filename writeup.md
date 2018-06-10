@@ -2,7 +2,7 @@
 
 ## Writeup
 
-### Kinji Sato
+### Kinji Sato 10/June/2018
 
 ---
 
@@ -23,17 +23,24 @@ The goals / steps of this project are the following:
 
 ### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
 
-My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I applied Gaussian smoothing for the gray clorred pictures.
+My pipeline consisted of 5 steps.
+
+First, I converted the images to grayscale.
+
+2nd, I applied Gaussian smoothing for the gray clorred pictures. The kernel_size was 5 as the same as lecture. 
+
+3rd, I applied Canny edge detection. low_threshold = 50, high_threshold = 150, those also have been carried from lecture. I could not find better value than this combination of low and high.
+
+4th, I masked picture with the vertices,
+vertices = np.array([[(0,imshape[0]),(450, 320), (490, 320), (imshape[1],imshape[0])]], dtype=np.int32)
+I choosed Y = 320, because, if this was smaller than this, many pipes (not R and L line) were detected. And comparing with the exmaple movies, I decided Y=320 should be enough for R and L pipe lines.
+
+5th, I applied Hough transformation. Helper function 'hough_lines' were calling 'draw_lines()' in its function. So, no need to call draw_lines() separatelly from 'hough_lines()'. The parameter tuning of Hoguh transform was difficult. rho = 2, theta = np.pi/180 were the same as lecture. I choose threshold = 50 to eliminate other pipes those were not related main R and L lines. And I choose ming_line_length = 10, and max_line_gap = 20, these combination gave me good results.
+
+6th, finaly, I combined the R and L linen from Hough transrom (draw_line) and original image.
 
 
 
-My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I .... 
-
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
-
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
-
-![alt text][image1]
 
 
 ### 2. Identify potential shortcomings with your current pipeline
